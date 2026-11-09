@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <uses-permission android:name="android.permission.INTERNET"/>
+ <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/><uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/><uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+ <application android:icon="@mipmap/ic_launcher" android:label="课间" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="false" android:usesCleartextTraffic="false" android:supportsRtl="true">
+  <receiver android:name=".Reminders" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED"/><action android:name="android.intent.action.TIME_SET"/><action android:name="android.intent.action.TIMEZONE_CHANGED"/></intent-filter></receiver>
+  <provider android:name=".NoteMediaProvider" android:authorities="cn.kejian.note-media" android:exported="false" android:grantUriPermissions="true"/>
+  <activity android:name=".NoteEditorActivity" android:exported="false" android:windowSoftInputMode="adjustResize"/>
+  <activity android:name=".AustImportActivity" android:exported="false"/>
+  <activity android:name=".ImportActivity" android:exported="false"/>
+  <activity android:name=".GeneralImportActivity" android:exported="false"/>
+  <activity android:name=".MainActivity" android:exported="true">
+   <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+  </activity>
+ </application>
+</manifest>

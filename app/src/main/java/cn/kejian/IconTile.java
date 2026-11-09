@@ -1,0 +1,7 @@
+package cn.kejian;
+import android.content.*;import android.graphics.*;import android.graphics.drawable.*;
+public final class IconTile extends Drawable {
+ private final Paint p=new Paint(3);private final int type;public IconTile(Context c,int type){this.type=type;}
+ @Override public void draw(Canvas canvas){Rect b=getBounds();float scale=Math.min(b.width(),b.height())/48f;canvas.save();canvas.translate(b.centerX()-24*scale,b.centerY()-24*scale);canvas.scale(scale,scale);p.setColor(UiKit.SURFACE);p.setStyle(Paint.Style.FILL);canvas.drawRoundRect(2,2,46,46,16,16,p);p.setColor(UiKit.INK);p.setStrokeWidth(1.8f);p.setStrokeCap(Paint.Cap.ROUND);p.setStyle(Paint.Style.STROKE);if(type==3){for(int y=17;y<=31;y+=7)canvas.drawLine(16,y,32,y,p);}else if(type==2){canvas.drawCircle(24,24,11,p);canvas.drawLine(24,13,24,35,p);p.setStyle(Paint.Style.FILL);canvas.drawArc(13,13,35,35,90,180,true,p);}else if(type==0){canvas.drawCircle(24,24,6,p);for(int i=0;i<8;i++){double a=i*Math.PI/4;canvas.drawLine(24+(float)Math.cos(a)*11,24+(float)Math.sin(a)*11,24+(float)Math.cos(a)*14,24+(float)Math.sin(a)*14,p);}}else{p.setStyle(Paint.Style.FILL);canvas.drawCircle(23,25,11,p);p.setColor(UiKit.SURFACE);canvas.drawCircle(28,20,10,p);}canvas.restore();}
+ @Override public void setAlpha(int a){}@Override public void setColorFilter(ColorFilter c){}@Override public int getOpacity(){return PixelFormat.TRANSLUCENT;}
+}

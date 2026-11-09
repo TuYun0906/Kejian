@@ -1,0 +1,2 @@
+package cn.kejian;
+public class MotionTest {public static void main(String[] args){if(Math.abs(SpringCurve.value(2740,1,0))>.00001)throw new AssertionError();float previous=0;for(int i=1;i<60;i++){float x=SpringCurve.value(2740,1,i*.01);if(!Float.isFinite(x)||x<previous-.0001||x>1.001)throw new AssertionError();previous=x;}if(Math.abs(SpringCurve.value(504,.8,1)-1)>.001)throw new AssertionError();if(Math.abs(SpringCurve.value(158,.68,1)-1)>.005)throw new AssertionError();System.out.println("PASS spring start, monotonic track and damped settling");}}

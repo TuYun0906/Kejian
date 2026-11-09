@@ -1,0 +1,3 @@
+package cn.kejian;
+import java.time.*;import java.util.*;
+public class ReminderPlanTest {public static void main(String[] args){LocalDate d=LocalDate.of(2026,11,5);ScheduleLogic.Course a=new ScheduleLogic.Course("a","高数","A1","",d,1,2),b=new ScheduleLogic.Course("b","英语","A2","",d,1,2);java.util.SortedMap<Long,java.util.List<ScheduleLogic.Course>> plan=ReminderPlan.groups(Arrays.asList(a,b),15,0);if(plan.size()!=1||plan.get(plan.firstKey()).size()!=2)throw new AssertionError("overlap reminders lost");if(plan.firstKey()!=a.start().atZone(ScheduleLogic.ZONE).toInstant().toEpochMilli()-900000)throw new AssertionError("lead time");System.out.println("PASS grouped simultaneous reminders and lead time");}}
